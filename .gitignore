@@ -1,0 +1,44 @@
+# Mac OS X
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+
+# Java
+*.class
+#*.jar
+*.war
+*.ear
+
+# IntelliJ
+.idea/
+out/
+*.iml
+reports/
+
+# Eclipse
+.classpath
+.project
+.settings/
+bin/
+
+# Gradle
+.gradle/
+build/
+
+# Vim
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+*~
+
+# Testing
+test*.gexf
+
+report/
+tmp/
