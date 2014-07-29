@@ -17,7 +17,6 @@ Icon
 .idea/
 out/
 *.iml
-reports/
 
 # Eclipse
 .classpath
