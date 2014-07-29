@@ -2,10 +2,15 @@ version = '0.1.0'
 
 apply plugin: 'java'
 
+repositories {
+    mavenCentral()
+}
+
 dependencies {
     compile files(
             'libs/djep-1.0.0.jar',
             'libs/jep-2.3.0.jar',
             'libs/peersim-1.0.5.jar'
     )
+    compile 'com.google.guava:guava:15.0'
 }
