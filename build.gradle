@@ -10,7 +10,12 @@ dependencies {
     compile files(
             'libs/djep-1.0.0.jar',
             'libs/jep-2.3.0.jar',
-            'libs/peersim-1.0.5.jar'
+            'libs/peersim-1.0.5.jar',
+            'libs/gephi-toolkit.jar'
     )
     compile 'com.google.guava:guava:15.0'
+    compile 'com.esotericsoftware.minlog:minlog:1.2'
+    compile 'com.google.code.gson:gson:2.2.2'
+    compile 'it.uniroma1.dis.wsngroup.gexf4j:gexf4j:0.4.4-BETA'
+    compile 'org.apache.directory.studio:org.apache.commons.io:2.4'
 }
