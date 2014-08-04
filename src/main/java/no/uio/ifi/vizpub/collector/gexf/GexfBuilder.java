@@ -485,19 +485,20 @@ public class GexfBuilder {
 
                     String edgeId = nodeData.getId() + "->" + neighborId;
 
-                    Set<String> topicsForEdge = new HashSet<>();
-                    for (String topicId : nodeData.getTopics()) {
-                        NodeData neighbor = overlay.getNode(neighborId);
-                        if (neighbor.subscribesTo(topicId)) {
-                            topicsForEdge.add(topicId);
-                        }
-                    }
+                    //FIXME: should be configurable
+//                    Set<String> topicsForEdge = new HashSet<>();
+//                    for (String topicId : nodeData.getTopics()) {
+//                        NodeData neighbor = overlay.getNode(neighborId);
+//                        if (neighbor.subscribesTo(topicId)) {
+//                            topicsForEdge.add(topicId);
+//                        }
+//                    }
 
                     EdgeData edgeData = EdgeData.newBuilder()
                             .withId(edgeId)
                             .withSourceId(nodeData.getId())
                             .withTargetId(neighborId)
-                            .withTopics(topicsForEdge)
+//                            .withTopics(topicsForEdge)
                             .build();
 
                     edges.put(edgeId, edgeData);
@@ -528,7 +529,7 @@ public class GexfBuilder {
             }
             // this is a new node
             else {
-                String nodeLabel = createNodeLabel(overlay, Long.parseLong(nodeData.getId()));
+                String nodeLabel = nodeData.getId();
 
                 node = graph.createNode(nodeData.getId())
                         .setLabel(nodeLabel);

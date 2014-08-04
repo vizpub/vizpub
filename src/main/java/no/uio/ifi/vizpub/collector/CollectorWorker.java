@@ -103,7 +103,7 @@ public class CollectorWorker implements Runnable {
             Log.info(LogCategory.COLLECTOR, "Processed dir found...");
             GexfBuilder gexfBuilder = new GexfBuilder();
             gexfBuilder.createStructuralOverlay(REPORT_PROCESSED, protocolName);
-            gexfBuilder.createDisseminationOverlay(REPORT_PROCESSED, protocolName, "0");
+//            gexfBuilder.createDisseminationOverlay(REPORT_PROCESSED, protocolName, "0");
         }
 
 //        if (Engine.getType() == Engine.Type.SIM) {

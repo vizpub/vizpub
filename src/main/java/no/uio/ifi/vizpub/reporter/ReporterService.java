@@ -76,8 +76,6 @@ public class ReporterService extends AbstractExecutionThreadService {
                 Report report = null;
                 try {
                     report = reportQueue.take();
-                    Log.debug(LogCategory.GEXF, "On consumer side of queue: " + report.getNodes().size());
-
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -89,13 +87,16 @@ public class ReporterService extends AbstractExecutionThreadService {
                 Gson gson = new GsonBuilder().registerTypeAdapter(Multimap.class, new MultimapDeserializer()).create();
                 String json = gson.toJson(report);
                 protocolName = report.getProtocolName();
+
+                if (protocolName == null) {
+                    Log.error(LogCategory.COLLECTOR, "Protocol name is missing from the reports");
+                    return;
+                }
+
                 Log.info(LogCategory.REPORTER, "Writing report to file...");
                 CollectorWorker.saveJsonReport(json, host, protocolName);
             }
-            if (protocolName != null) {
-                CollectorWorker.finish(protocolName);
-            }
-//        }
+        CollectorWorker.finish(protocolName);
     }
 
     @Override

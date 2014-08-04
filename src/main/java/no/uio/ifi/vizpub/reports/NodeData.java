@@ -129,6 +129,10 @@ public final class NodeData {
         return duplicateCount;
     }
 
+    public boolean includeTopics() {
+        return topics == null || topics.isEmpty();
+    }
+
     public static final class Builder {
         private String id;
         private Set<String> neighbors;

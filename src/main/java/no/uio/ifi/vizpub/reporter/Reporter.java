@@ -104,9 +104,6 @@ public class Reporter implements Control {
 //        }
 
         Log.info(LogCategory.REPORTER, "Report no. : " + reporterIntervalCount);
-        Log.info(LogCategory.REPORTER, "Remaining experiment time: " + ((CommonState.getEndTime() - CommonState.getTime()) / 1000) + "s");
-        Log.debug(LogCategory.REPORTER, "Reporter execute() time: " + +stopwatch.elapsed(TimeUnit.MILLISECONDS) + "ms");
-
         reporterIntervalCount++;
         return false;
     }
@@ -173,6 +170,7 @@ public class Reporter implements Control {
                     .build();
 
             nodes.put(node.getId(), node);
+            Log.debug(LogCategory.REPORTER, "Network size: " + nodes.size());
 
             //TODO: should be determined by config
 //            for (PubMessage pubMessage : node.getPublicationMsgsSent().values()) {

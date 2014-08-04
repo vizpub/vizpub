@@ -347,7 +347,7 @@ public class NodeAttributes {
         checkNotNull(node);
         checkNotNull(nodeData);
 
-        if (nodeData.getTopics().isEmpty()) {
+        if (nodeData.includeTopics()) {
             return;
         }
         checkArgument(start < end, "Start value must be lower than end value");
