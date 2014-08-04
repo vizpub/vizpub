@@ -57,8 +57,8 @@ public class Reporter implements Control {
     private static String PAR_CHURN_ENABLED = "churn_enabled";
     private static String PAR_PUBLICATIONS_ENABLED = "publications_enabled";
 
-    private final boolean churnEnabled;
-    private final boolean publicationsEnabled;
+//    private final boolean churnEnabled;
+//    private final boolean publicationsEnabled;
 
     public Reporter(String name) {
         protocolId = Configuration.getPid(name + "." + PAR_PROTOCOL);
@@ -72,8 +72,8 @@ public class Reporter implements Control {
 
 //        churnInjector = new ChurnInjectorImpl(name + "." + PAR_CHURN_INJECTOR);
 
-        churnEnabled = Configuration.getBoolean(name + "." + PAR_CHURN_ENABLED);
-        publicationsEnabled = Configuration.getBoolean(name + "." + PAR_PUBLICATIONS_ENABLED);
+//        churnEnabled = Configuration.getBoolean(name + "." + PAR_CHURN_ENABLED);
+//        publicationsEnabled = Configuration.getBoolean(name + "." + PAR_PUBLICATIONS_ENABLED);
     }
 
     @Override
@@ -157,40 +157,41 @@ public class Reporter implements Control {
             Reportable reportable = (Reportable) Network.get(i).getProtocol(protocolId);
 
             // create nodes
+            //TODO: should read settings from config
             NodeData node = NodeData.builder()
                     .withId(reportable.reportId())
                     .withNeighbors(reportable.reportNeighborIds())
-                    .withTopics(reportable.reportTopics())
-                    .withControlMsgsSent(reportable.reportControlMsgsSent())
-                    .withControlMsgsReceived(reportable.reportControlMsgsReceived())
-                    .withBitsSent(reportable.reportControlBytesSent())
-                    .withBitsReceived(reportable.reportControlBytesReceived())
-                    .withSubscriptionSize(reportable.reportSubscriptionSize())
-                    .withPublicationMsgsSent(reportable.reportPubMsgsSent())
-                    .withPublicationMsgsReceived(reportable.reportPubMsgsReceived())
-                    .withDuplicateMsgs(reportable.reportDuplicatePubMsgs())
+//                    .withTopics(reportable.reportTopics())
+//                    .withControlMsgsSent(reportable.reportControlMsgsSent())
+//                    .withControlMsgsReceived(reportable.reportControlMsgsReceived())
+//                    .withBitsSent(reportable.reportControlBytesSent())
+//                    .withBitsReceived(reportable.reportControlBytesReceived())
+//                    .withSubscriptionSize(reportable.reportSubscriptionSize())
+//                    .withPublicationMsgsSent(reportable.reportPubMsgsSent())
+//                    .withPublicationMsgsReceived(reportable.reportPubMsgsReceived())
+//                    .withDuplicateMsgs(reportable.reportDuplicatePubMsgs())
                     .build();
 
             nodes.put(node.getId(), node);
 
-            for (PubMessage pubMessage : node.getPublicationMsgsSent().values()) {
-                if (!publications.containsKey(pubMessage.getMsgId())) {
-                    publications.put(pubMessage.getMsgId(), pubMessage);
-                }
-            }
-
-            reportable.clearPublications();
+            //TODO: should be determined by config
+//            for (PubMessage pubMessage : node.getPublicationMsgsSent().values()) {
+//                if (!publications.containsKey(pubMessage.getMsgId())) {
+//                    publications.put(pubMessage.getMsgId(), pubMessage);
+//                }
+//            }
+//            reportable.clearPublications();
         }
 
-        Log.debug(LogCategory.REPORTER, "Added " + publications.size() + " publications to report");
-        Log.debug(LogCategory.REPORTER, "Overlay size: " + nodes.size());
+//        Log.debug(LogCategory.REPORTER, "Added " + publications.size() + " publications to report");
+//        Log.debug(LogCategory.REPORTER, "Overlay size: " + nodes.size());
 
         return Report.builder()
                 .withProtocolId(protocolId)
                 .withProtocolName(protocolName)
                 .withIntervalCount(reporterIntervalCount)
                 .withNodes(nodes)
-                .withPublications(publications)
+//                .withPublications(publications)
                 .build();
     }
 }
