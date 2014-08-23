@@ -25,20 +25,20 @@ These steps are taken from [this
 issue.](https://github.com/gephi/gephi/issues/895)
 
 #### Caveats with Gephi
-* Failing to delete the ``/Users/<your_username>/Library/Application
-    Support/gephi/`` directory before installing gephi might cause it to
-    work from the DMG but NOT from the Applications folder
+Failing to delete the ``/Users/<your_username>/Library/Application
+Support/gephi/`` directory before installing gephi might cause it to
+work from the DMG but NOT from the Applications folder
 
-    #### Increase memory limit in Gephi
-    If Gephi reaches the maximum memory limit, it has to exit and all
-    your
-    work will be lost. It is recommended to increase the default memory
-    size. You can increase them by editing the ``Xmx`` and ``Xms``
-    parameters in the gephi.conf file. The conf file is found in the
-    Application folder where you installed Gephi:
+#### Increase memory limit in Gephi
+If Gephi reaches the maximum memory limit, it has to exit and all
+your
+work will be lost. It is recommended to increase the default memory
+size. You can increase them by editing the ``Xmx`` and ``Xms``
+parameters in the gephi.conf file. The conf file is found in the
+Application folder where you installed Gephi:
 
-    `` <Application
-    Folder>/Gephi.app/Contents/Resources/gephi/etc/gephi.conf``
+`` <Application
+Folder>/Gephi.app/Contents/Resources/gephi/etc/gephi.conf``
 
-    For more details see the [Gephi installation
-    instructions](https://gephi.org/users/install/)
+For more details see the [Gephi installation
+instructions](https://gephi.org/users/install/)
